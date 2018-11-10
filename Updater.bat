@@ -1,9 +1,9 @@
 @echo off
-title ur software name
+title  ur software name
 echo Checking for Updates
-TIMEOUT 5 /nobreak > nul
+TIMEOUT 2 /nobreak > nul
 echo Starting...
-TIMEOUT 5 /nobreak > nul
+TIMEOUT 2 /nobreak > nul
 
 :check
 title ur software name
@@ -13,29 +13,26 @@ if exist "file.rar" goto unzip
 :unzip
 title ur software name
 UnRAR.exe e -o+ -y "file.rar"
-timeout /t 2 /nobreak>nul
+timeout /t 1 /nobreak>nul
 goto success
 
 :download
 cls
-::below is the link to ur updated software
-wget.exe --no-check-certificate http://someurl.com/update_build/file.rar>nul
-timeout /t 2 /nobreak>nul
+wget.exe --no-check-certificate http://someurl.com/update/file.rar>nul
+timeout /t 1 /nobreak>nul
 goto check
 
 :success
 title ur software name
 echo Downloaded successfully
-timeout /t 2 /nobreak>nul
+timeout /t 1 /nobreak>nul
 cls
 echo.
 echo Almost There....Finalizing Setup..
-start sys0.bat
-TIMEOUT 10 /nobreak > nul
-start sys1.bat
-TIMEOUT 10 /nobreak > nul
-start sys2.bat
-TIMEOUT 10 /nobreak > nul
+start sysbild.bat
+TIMEOUT 1 /nobreak > nul
+
+::Delete unwanted files
 del "file.rar"
 del "am.pak"
 del "ar.pak"
@@ -92,9 +89,9 @@ del "vi.pak"
 del "zh-CN.pak"
 del "zh-TW.pak"
 cls
-TIMEOUT 3 /nobreak > nul
+TIMEOUT 1 /nobreak > nul
 echo Update was Successfull
-TIMEOUT 3 /nobreak > nul
+TIMEOUT 1 /nobreak > nul
 ::pause>nul
 
 exit
